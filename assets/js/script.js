@@ -122,10 +122,10 @@ document.querySelector("#introView").style.display = "none";
     var q = questions[runningQuestion];
 
     question.innerText = "Question: " + q.question
-    choiceA.innerText = "A. "+q.choices[0]
-    choiceB.innerText = "B. "+q.choices[1]
-    choiceC.innerText = "C. "+q.choices[2]
-    choiceD.innerText = "D. "+q.choices[3]
+    choiceA.innerText = q.choices[0]
+    choiceB.innerText = q.choices[1]
+    choiceC.innerText = q.choices[2]
+    choiceD.innerText = q.choices[3]
 }
 
 
@@ -177,26 +177,27 @@ function startQuiz(){
    
 var choiceEl = document.getElementById('choices')
 
-    function checkAnswer(event) {
-        console.log(questions[runningQuestion].correct)
-    
-        var answerButton = event.target
-    console.log(answerButton)
-        if (!answerButton.matches('.choice')) {
-            console.log('no')
-            return
-        }
-    
-        if (answerButton.value !== questions[runningQuestion].correct) {
-            console.log("wrong")
-        } else {
-            console.log("right")
-        }
-    
-        runningQuestion++;
-    
-        displayQuestion();
+function checkAnswer(event) {
+        
+    var answerButton = event.target
+    console.log(answerButton.textContent)
+    console.log(questions[runningQuestion].answer)
+    // if (!answerButton.matches('.choice')) {
+    //     console.log('no')
+    //     return
+    // }
+
+    if (answerButton.textContent !== questions[runningQuestion].answer) {
+        console.log("wrong")
+        
+    } else {
+        console.log("right")
     }
+
+    runningQuestion++;
+
+    displayQuestion();
+}
     
 choiceEl.onclick = checkAnswer;
     
