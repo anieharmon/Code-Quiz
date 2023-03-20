@@ -6,25 +6,12 @@ var choiceA = document.getElementById("A");
 var choiceB = document.getElementById("B");
 var choiceC = document.getElementById("C");
 var choiceD = document.getElementById("D");
-var quizQuestions = document.getElementById("questionView")
-var quizTime = document.getElementById("timer");
-
-
-//function for quiz button
-quizButton.addEventListener("click",function(){
-document.querySelector("#questionView").style.display = "block"
-document.querySelector("#introView").style.display = "none"
-
-})
-
-//create functionality inside input forms
-//mkae sure its changing questions
-//tracking correct and incorrect answers
-//returning correct answer
-
+var quizQuestions = document.getElementById("questionView");
+var timerElement = document.getElementById("timer-count");
+var scoreView = document.getElementById("highscores");
 
 //creating questions
- let questions = [
+let questions = [
     {
         question : "What does "JS" stand for in JavaScript?",
         choiceA : "Just Saying",
@@ -34,7 +21,7 @@ document.querySelector("#introView").style.display = "none"
         correct : "C",
     }
     {
-        question : "Which keyword is used to declare a variable in JavaScript?"
+        question : "Which keyword is used to declare a variable in JavaScript?",
         choiceA : "let",
         choiceB : "var",
         choiceC : "const",
@@ -105,9 +92,75 @@ document.querySelector("#introView").style.display = "none"
         correct : "C",
     }];
 
+
+ //more variables
+ var lastQuestion = questions.length - 1
+ var runningQuestion = 0;
+ timerElement;
+let score = 0;
+
+//function for quiz button
+quizButton.addEventListener("click",function(){
+document.querySelector("#questionView").style.display = "block";
+document.querySelector("#introView").style.display = "none";
+});
+
+
+ // displaying the question
+ function displayQuestion(){
+    var q = questions[runningQuestion];
+
+    question.innerHTML = "<p>" + q.question + "</p>";
+    choiceA.innerHTML = q.choiceA;
+    choiceB.innerHTML = q.choiceB;
+    choiceC.innerHTML = q.choiceC;
+    choiceD.innerHTML = q.choiceD;
+}
+
+
+start.addEventListener("click",startQuiz);
+
+//starting quiz
+function startQuiz(){
+    quizButton.style.display = "none";
+    displayQuestion();
+    questionView.style.display = "block";
+    timerElement = setInterval(1000);
+}
+//tracking correct and incorrect answers
+
+
+
+   
+
     //setting the timer for the quiz
-    var quizTime = document.getElementById("timer");
-    let count = 0;
+    //var count
+    //timerElement = 75; //75 seconds for the whole quiz
+    
+    
+    function displayTime(){
+        timer = setInterval(function() {
+            timerCount--;
+            timerElement.textContent = timerCount;
+            if (timerCount >= 0) {
+              // Tests if win condition is met
+              if (answerIsCorrect && timerCount > 0) {
+                // Clears interval and stops timer
+                clearInterval(timer);
+                winGame();
+              }
+            }
+            // Tests if time has run out
+            if (timerCount === 0) {
+              // Clears interval
+              clearInterval(timer);
+              loseGame();
+            }
+          }, 1000);
+
+    }
+
+
 
     // setting the function to check for answers
     var score = 0
@@ -129,7 +182,10 @@ document.querySelector("#introView").style.display = "none"
         }}
     
 
+// scoring
+function scoreDisplay(){
 
+}
 
 
 
