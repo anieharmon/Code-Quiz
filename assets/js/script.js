@@ -6,12 +6,15 @@ var choiceA = document.getElementById("A");
 var choiceB = document.getElementById("B");
 var choiceC = document.getElementById("C");
 var choiceD = document.getElementById("D");
+var quizQuestions = document.getElementById("questionView")
+var quizTime = document.getElementById("timer");
 
 
-
+//function for quiz button
 quizButton.addEventListener("click",function(){
 document.querySelector("#questionView").style.display = "block"
 document.querySelector("#introView").style.display = "none"
+
 })
 
 //create functionality inside input forms
@@ -101,6 +104,31 @@ document.querySelector("#introView").style.display = "none"
         choiceD : "none of the above",
         correct : "C",
     }];
+
+    //setting the timer for the quiz
+    var quizTime = document.getElementById("timer");
+    let count = 0;
+
+    // setting the function to check for answers
+    var score = 0
+    var quizQuestions = document.getElementById("questionView")
+    function checkAnswer(answer){
+        if(questions[runningQuestionIndex].correct == answer){
+            score++;
+            answerIsCorrect();
+        } else {
+            answerIsWrong();
+        }
+        if(runningQuestionIndex < lastQuestionIndex){
+            count = 0;
+            runningQuestionIndex++;
+            quizQuestions();
+        } else {
+            clearTimeout(quizTime);
+            scoreView();
+        }}
+    
+
 
 
 
