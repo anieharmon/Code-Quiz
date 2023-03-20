@@ -9,9 +9,10 @@ var choiceD = document.getElementById("D");
 var quizQuestions = document.getElementById("questionView");
 var timerElement = document.getElementById("timer-count");
 var scoreView = document.getElementById("highscores");
+var startButton = document.getElementById("startQuiz")
 
 //creating questions
-let questions = [
+var questions = [
     {
         question : "What does 'JS' stand for in JavaScript?",
         choiceA : "Just Saying",
@@ -90,13 +91,13 @@ let questions = [
         choiceC : "const",
         choiceD : "none of the above",
         correct : "C",
-    }];
+    }
+];
 
-
- //more variables
- var lastQuestion = questions.length - 1
- var runningQuestion = 0;
- timerElement;
+//more variables
+var lastQuestion = questions.length - 1
+var runningQuestion = 0;
+timerElement;
 let score = 0;
 
 //function for quiz button
@@ -110,15 +111,15 @@ document.querySelector("#introView").style.display = "none";
  function displayQuestion(){
     var q = questions[runningQuestion];
 
-    question.innerHTML = "<p>" + q.question + "</p>";
-    choiceA.innerHTML = q.choiceA;
-    choiceB.innerHTML = q.choiceB;
-    choiceC.innerHTML = q.choiceC;
-    choiceD.innerHTML = q.choiceD;
+    question.innerText = "Question: " + q.question
+    choiceA.innerText = "A. "+q.choiceA;
+    choiceB.innerText = "B. "+q.choiceB;
+    choiceC.innerText = "C. "+q.choiceC;
+    choiceD.innerText = "D. "+q.choiceD;
 }
 
 
-startQuiz.addEventListener("click", displayQuestion);
+startButton.addEventListener("click", startQuiz);
 
 //starting quiz
 function startQuiz(){
@@ -163,7 +164,7 @@ function startQuiz(){
 
 
     // setting the function to check for answers
-    var quizQuestions = document.getElementById("questionView")
+   
     function checkAnswer(answer){
         if(questions[runningQuestionIndex].correct == answer){
             score++;

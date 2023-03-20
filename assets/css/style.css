@@ -1,3 +1,35 @@
 #questionView {
     display: none;
 }
+
+#timer-count {
+    float: right;
+}
+
+#main {
+    text-align: center;
+}
+
+#instr {
+    text-align: center;
+    line-height: 1.5;
+}
+
+
+#choices {
+    align-items: center;
+}
+
+#startQuiz:hover {
+    border: 3px;
+    color: purple;
+    cursor: pointer;
+}
+
+.choice {
+    color: blue;
+}
+.choice:hover {
+    color: maroon;
+    cursor: pointer;
+}

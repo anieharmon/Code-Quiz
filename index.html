@@ -9,26 +9,23 @@
     <title>JavaScript Quiz</title>
 </head>
 
-<div>
-<nav id="highscores">View Highscores</nav>
-</div>
-
-<div>
-<aside id="timer-count">Seconds Remaining</aside>
+<div id="container">
+    <div id="highscores">View Highscores</div>
+    <div id="timer-count">Seconds Remaining:</div>
 </div>
 
 <body>
     <div id="introView">
-        <h1>Coding Quiz Challenge</h1>
-        <p>Try to answer the following code-related questions within the time limit. Keep in mind that wrong answers will penalize your ScoreTime by ten seconds.</p>
+        <h1 id="main">Coding Quiz Challenge</h1>
+        <p id="instr">Try to answer the following code-related questions within the time limit. Keep in mind that wrong answers will penalize your ScoreTime by ten seconds.</p>
         <button id="startQuiz">Start Quiz</button>
     </div>
 
 
     <div id="questionView">
-        <h1 id ="question"></h1>
+        <h1 id ="question">Question</h1>
         <div id="choices">
-            <div class="choice" id="A" onclick="checkAnswer('A')">A</div>
+            <div class="choice" id="A" onclick="checkbox('A')">A</div>
             <div class="choice" id="B" onclick="checkAnswer('B')">B</div>
             <div class="choice" id="C" onclick="checkAnswer('C')">C</div>
             <div class="choice" id="D" onclick="checkAnswer('D')">D</div>
