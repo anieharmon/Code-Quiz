@@ -15,82 +15,92 @@ var startButton = document.getElementById("startQuiz")
 var questions = [
     {
         question : "What does 'JS' stand for in JavaScript?",
-        choiceA : "Just Saying",
-        choiceB : "Java Script",
-        choiceC : "JavaScript",
-        choiceD : "Jolt Script",
-        correct : "C",
+       choices: [
+        "Just Saying",
+        "Java Script",
+        "JavaScript",
+        "Jolt Script",],
+        answer : "JavaScript",
     },
     {
         question : "Which keyword is used to declare a variable in JavaScript?",
-        choiceA : "let",
-        choiceB : "var",
-        choiceC : "const",
-        choiceD : "all of the above",
-        correct : "D",
+        choices: [
+        "let",
+        "var",
+        "const",
+        "all of the above",],
+        answer : "all of the above",
     },
     {   
         question : "What is the difference between == and === in JavaScript?",
-        choiceA : "There is no difference",
-        choiceB : "== compares the value and type, while === compares only the value",
-        choiceC : "=== compares the value and type, while == compares only the value",
-        choiceD : "== compares only the type, while === compares the value and type",
-        correct : "C",
+        choices: [
+        "There is no difference",
+        "== compares the value and type, while === compares only the value",
+        "=== compares the value and type, while == compares only the value",
+        "== compares only the type, while === compares the value and type",],
+        answer : "=== compares the value and type, while == compares only the value",
     }, 
     {  
         question : "Which of the following is NOT a primitive data type in JavaScript?",
-        choiceA : "string",
-        choiceB : "boolean",
-        choiceC : "array",
-        choiceD : "number",
-        correct : "C",
+        choices: [
+        "string",
+        "boolean",
+        "array",
+        "number",],
+        answer : "array",
     },
     {    
         question : "Which of the following is used to add an element to the end of an array in JavaScript?",
-        choiceA : "push()",
-        choiceB : "unshift()",
-        choiceC : "shift()",
-        choiceD : "pop()",
-        correct : "A",
+        choices: [
+        "push()",
+        "unshift()",
+        "shift()",
+        "pop()",],
+        answer : "push()",
     },
     {    
         question : "What does the term 'callback function mean in JavaScript?",
-        choiceA : "A function that is called at the beginning of a script",
-        choiceB : "A function that is called when an event occurs",
-        choiceC : "A function that is passed as an argument to another function",
-        choiceD : "A function that is called when an error occurs",
-        correct : "C",
+        choices: [
+        "A function that is called at the beginning of a script",
+        "A function that is called when an event occurs",
+        "A function that is passed as an argument to another function",
+        "A function that is called when an error occurs",],
+        answer : "A function that is passed as an argument to another function",
     },
     {
         question : "Which of the following is used to declare a function in JavaScript?",
-        choiceA : "def",
-        choiceB : "func",
-        choiceC : "function",
-        choiceD : "fn",
-        correct : "C",
+        choices: [
+        "def",
+        "func",
+        "function",
+        "fn",],
+        answer : "function",
     },
     {   question : "What is the purpose of the 'this' keyword in JavaScript?",
-        choiceA : "It refers to the current object",
-        choiceB : "It refers to the global object",
-        choiceC : "It refers to the parent object",
-        choiceD : "It refers to the child object",
-        correct : "A",
+        choices: [
+        "It refers to the current object",
+        "It refers to the global object",
+        "It refers to the parent object",
+        "It refers to the child object",],
+        answer : "It refers to the current object",
     },
     {
         question : "Which of the following is NOT a looping structure in JavaScript?",
-        choiceA : "while",
-        choiceB : "do-while",
-        choiceC : "for",
-        choiceD : "repeat-until",
-        correct : "D",
+        choices: [
+        "while",
+        "do-while",
+        "for",
+        "repeat-until",],
+        answer : "repeat-until",
     },
     {    
         question: "Which of the following is used to prevent a variable from being modified in JavaScript?",
-        choiceA : "let",
-        choiceB : "var",
-        choiceC : "const",
-        choiceD : "none of the above",
-        correct : "C",
+        choices: [
+        "let",
+        "var",
+        "const",
+        "none of the above",],
+        answer : "const",
     }
 ];
 
@@ -112,10 +122,10 @@ document.querySelector("#introView").style.display = "none";
     var q = questions[runningQuestion];
 
     question.innerText = "Question: " + q.question
-    choiceA.innerText = "A. "+q.choiceA;
-    choiceB.innerText = "B. "+q.choiceB;
-    choiceC.innerText = "C. "+q.choiceC;
-    choiceD.innerText = "D. "+q.choiceD;
+    choiceA.innerText = "A. "+q.choices[0]
+    choiceB.innerText = "B. "+q.choices[1]
+    choiceC.innerText = "C. "+q.choices[2]
+    choiceD.innerText = "D. "+q.choices[3]
 }
 
 
@@ -165,21 +175,30 @@ function startQuiz(){
 
     // setting the function to check for answers
    
-    function checkAnswer(answer){
-        if(questions[runningQuestionIndex].correct == answer){
-            score++;
-            answerIsCorrect();
-        } else {
-            answerIsWrong();
+var choiceEl = document.getElementById('choices')
+
+    function checkAnswer(event) {
+        console.log(questions[runningQuestion].correct)
+    
+        var answerButton = event.target
+    console.log(answerButton)
+        if (!answerButton.matches('.choice')) {
+            console.log('no')
+            return
         }
-        if(runningQuestionIndex < lastQuestionIndex){
-            count = 0;
-            runningQuestionIndex++;
-            quizQuestions();
+    
+        if (answerButton.value !== questions[runningQuestion].correct) {
+            console.log("wrong")
         } else {
-            clearTimeout(quizTime);
-            scoreView();
-        }}
+            console.log("right")
+        }
+    
+        runningQuestion++;
+    
+        displayQuestion();
+    }
+    
+choiceEl.onclick = checkAnswer;
     
 
 // scoring
