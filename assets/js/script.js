@@ -11,6 +11,7 @@ var timerElement = document.getElementById("timer-count");
 var scoreView = document.getElementById("highscores");
 var startButton = document.getElementById("startQuiz");
 var timerCount
+var highscores = []
 
 //creating questions
 var questions = [
@@ -192,8 +193,11 @@ function checkAnswer(event) {
     }
 
     runningQuestion++;
-
-    displayQuestion();
+    if (runningQuestion > lastQuestion){
+        endQuiz()
+    } else {
+        displayQuestion();
+    }
 }
 
 choiceEl.onclick = checkAnswer;
@@ -205,10 +209,40 @@ choiceEl.onclick = checkAnswer;
 //run score display
 // scoring
 function scoreDisplay() {
+//add event listener for submit initials button
+
+
+
+
+
+//get input element by id as a variable
+
+
+
+//check if the initials are not empty
+
+
+// create a new score entry as an object with initials and a score
+
+
+
+//get the highscore from local stroage as a variable
+
+//push new high scores to the array
+
+//hide submit score div
+
+//display scoreDiv and add text content from highscores to the div
 
 }
+//score display will run when we click submit
+function endQuiz() {
+    clearInterval(timer)
+    questionView.style.display = "none";
+    var submitScore = document.getElementById("submitScore");
+    submitScore.style.display = "block";
 
-
+}
 
 
 

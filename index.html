@@ -17,13 +17,14 @@
 <body>
     <div id="introView">
         <h1 id="main">Coding Quiz Challenge</h1>
-        <p id="instr">Try to answer the following code-related questions within the time limit. Keep in mind that wrong answers will penalize your ScoreTime by ten seconds.</p>
+        <p id="instr">Try to answer the following code-related questions within the time limit. Keep in mind that wrong
+            answers will penalize your ScoreTime by ten seconds.</p>
         <button id="startQuiz">Start Quiz</button>
     </div>
 
 
     <div id="questionView">
-        <h1 id ="question">Question</h1>
+        <h1 id="question">Question</h1>
         <div id="choices">
             <div class="choice" id="A" onclick="checkbox('A')"></div>
             <div class="choice" id="B" onclick="checkAnswer('B')"></div>
@@ -32,7 +33,12 @@
         </div>
     </div>
     </ul>
-    
+
+    <div id="submitScore" style="display: none">
+        <h1>Enter your initials</h1>
+        <input type="text" id="initialsInput" />
+        <button id="submitInitials">Submit</button>
+
     </div>
     <div id="scoreDiv" style="display: none;">
     </div>

@@ -1,13 +1,19 @@
 #questionView {
     display: none;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: hotpink;
 }
-
+#question {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: hotpink;
+}
 #timer-count {
     float: right;
 }
 
 #main {
     text-align: center;
+    color: blue;
 }
 
 #instr {
@@ -17,19 +23,36 @@
 
 
 #choices {
-    align-items: center;
+    float: inline-end;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+#startQuiz {
+    align-content: center;
 }
 
 #startQuiz:hover {
     border: 3px;
     color: purple;
     cursor: pointer;
+    background-color: blueviolet;
 }
 
 .choice {
     color: blue;
 }
 .choice:hover {
-    color: maroon;
+    color: purple;
     cursor: pointer;
+}
+
+#highscores {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: rgb(0, 140, 255);
+    cursor: pointer;
+}
+
+body {
+    background-color: lightpink;
 }
