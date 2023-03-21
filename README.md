@@ -8,7 +8,7 @@ The purpose of this challenge was to create a quiz about JavaScript
 
 This project is a code quiz. The user will answer 10 questions and if they answer questions incorrectly their time will go down faster. This quiz will also display the amount of time left and will keep track of high scores
 
-![passwordgenerator](./assets/image/PasswordGenerator.png)
+![CodingQuiz](./assets/image/CodingQuiz.png)
 
 ##Installation
 
