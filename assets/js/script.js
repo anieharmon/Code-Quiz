@@ -9,7 +9,8 @@ var choiceD = document.getElementById("D");
 var quizQuestions = document.getElementById("questionView");
 var timerElement = document.getElementById("timer-count");
 var scoreView = document.getElementById("highscores");
-var startButton = document.getElementById("startQuiz")
+var startButton = document.getElementById("startQuiz");
+var timerCount 
 
 //creating questions
 var questions = [
@@ -137,6 +138,7 @@ function startQuiz(){
     displayQuestion();
     questionView.style.display = "block";
     timerElement = setInterval(1000);
+    displayTime();
 }
 //tracking correct and incorrect answers
 
@@ -150,22 +152,22 @@ function startQuiz(){
     
     
     function displayTime(){
+        timerCount = 75; 
+        timerElement.textContent = timerCount;
         timer = setInterval(function() {
-            timerCount--;
+            timerCount --;
             timerElement.textContent = timerCount;
             if (timerCount >= 0) {
               // Tests if win condition is met
-              if (answerIsCorrect && timerCount > 0) {
+              if (timerCount > 0) {
                 // Clears interval and stops timer
                 clearInterval(timer);
-                winGame();
               }
             }
             // Tests if time has run out
             if (timerCount === 0) {
               // Clears interval
               clearInterval(timer);
-              loseGame();
             }
           }, 1000);
 
@@ -180,7 +182,7 @@ var choiceEl = document.getElementById('choices')
 function checkAnswer(event) {
         
     var answerButton = event.target
-    console.log(answerButton.textContent)
+    //console.log(answerButton.textContent)
     console.log(questions[runningQuestion].answer)
     // if (!answerButton.matches('.choice')) {
     //     console.log('no')
