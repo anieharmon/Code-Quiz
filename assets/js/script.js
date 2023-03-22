@@ -202,17 +202,17 @@ function checkAnswer(event) {
 
 choiceEl.onclick = checkAnswer;
 
-//need a function to handle the end of the quiz
-//stop the timer
-//display text input for high scores
-//take the value and put it into local storage
-//run score display
-// scoring
+
 function scoreDisplay() {
+    var initials = document.getElementById('initialsInput').value;
+    localStorage.setItem("HSinitials", initials);
+
+}
+
+var storedinitials = localStorage.getItem("HSinitials");
+console.log(storedinitials);
 //add event listener for submit initials button
-
-
-
+document.getElementById('submitInitials').onclick = scoreDisplay;
 
 
 //get input element by id as a variable
@@ -234,7 +234,7 @@ function scoreDisplay() {
 
 //display scoreDiv and add text content from highscores to the div
 
-}
+
 //score display will run when we click submit
 function endQuiz() {
     clearInterval(timer)
